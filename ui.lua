@@ -1219,8 +1219,8 @@ function uiRbs:MakeNotification(Name, Content, Image, Time)
         m.Parent=p
 
         local f=Instance.new("Frame")
-        f.Size=UDim2.new(0,400,0,90)
-        f.Position=UDim2.new(.5,-200,.1,-100)
+        f.Size=UDim2.new(0,550,0,90) -- كبرنا العرض
+        f.Position=UDim2.new(.5,-275,.1,-100) -- عدلنا الموقع عشان يتوسط
         f.BackgroundColor3=Color3.fromRGB(30,30,50)
         f.BorderSizePixel=0
         f.Parent=m
@@ -1249,8 +1249,8 @@ function uiRbs:MakeNotification(Name, Content, Image, Time)
         a(f,Color3.fromRGB(140,80,255))
 
         local l=Instance.new("TextLabel")
-        l.Size=UDim2.new(0,150,0,40)
-        l.Position=UDim2.new(0,133,0,21)
+        l.Size=UDim2.new(0,350,0,40)
+        l.Position=UDim2.new(0,100,0,25)
         l.BackgroundColor3=Color3.fromRGB(80,80,80)
         l.BorderSizePixel=0
         l.Text=Name.." | "..Content
@@ -1261,10 +1261,10 @@ function uiRbs:MakeNotification(Name, Content, Image, Time)
         Instance.new("UICorner",l).CornerRadius=UDim.new(0,6)
         a(l,Color3.fromRGB(255,80,200))
 
-        T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(.5,-200,.1,30)}):Play()
+        T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(.5,-275,.1,30)}):Play()
 
         task.delay(Time,function()
-            local w=T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(.5,-200,.1,-100),BackgroundTransparency=1})
+            local w=T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(.5,-275,.1,-100),BackgroundTransparency=1})
             w:Play()
             w.Completed:Connect(function()m:Destroy()end)
         end)
