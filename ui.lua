@@ -16,7 +16,7 @@ local cofingui = {
 
 local devs = {
   dev_1_nick = "Alexander",rank_2 ="المصمم/سـكربتر",img_dev1 = "https://ik.imagekit.io/17xocy4pg/Rakan.jpg?updatedAt=1788993377160",
-  dev_2_nick = "Ronaldo",rank_3 = "سكـربتر",img_dev2 = "https://www.roblox.com/headshot-thumbnail/image?userId=6233008733&width=420&height=420&format=png"
+  dev_2_nick = "Ronaldo",rank_3 = "سكـربتر",img_dev2 = "https://www.roblox.com/headshot-thumbnail/image?userId=6233008733&width=420&height=420&format=png",
   owner_nick = "Omar",rank_owner = "الاونر",img_owner = "rbxassetid://86388577296664",
 }
 task.spawn(function()
