@@ -1203,75 +1203,64 @@ end
 
 local NotificationHolder = Instance.new("Frame")
 NotificationHolder.Name = "NotificationHolder"
-NotificationHolder.Position = UDim2.new(1, -25, 1, -25)
-NotificationHolder.Size = UDim2.new(0, 220, 1, -25)
-NotificationHolder.AnchorPoint = Vector2.new(1, 1)
 NotificationHolder.BackgroundTransparency = 1
+NotificationHolder.Size = UDim2.new(1, 0, 1, 0)
 NotificationHolder.Parent = ScreenGui
 
-local NotificationList = Instance.new("UIListLayout")
-NotificationList.HorizontalAlignment = Enum.HorizontalAlignment.Center
-NotificationList.SortOrder = Enum.SortOrder.LayoutOrder
-NotificationList.VerticalAlignment = Enum.VerticalAlignment.Bottom
-NotificationList.Padding = UDim.new(0, 7)
-NotificationList.Parent = NotificationHolder
-
-function uiRbs:MakeNotification(Name,Content,Image,Time)
+function uiRbs:MakeNotification(Name, Content, Image, Time)
     task.spawn(function()
-        local Frame = Instance.new("Frame")
-        Frame.Size = UDim2.new(0, 220, 0, 73)
-        Frame.Position = UDim2.new(1, 20, 0, 0)
-        Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-        Frame.Parent = NotificationHolder
-        sot(Frame)
+        local T = game:GetService("TweenService")
+        local p = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-        local Corner = Instance.new("UICorner")
-        Corner.CornerRadius = UDim.new(0, 10)
-        Corner.Parent = Frame
+        local m = Instance.new("ScreenGui", p)
+        m.ResetOnSpawn = false
+        m.DisplayOrder = 999
+        m.IgnoreGuiInset = true
 
-        local Icon = Instance.new("ImageLabel")
-        Icon.Size = UDim2.new(0, 20, 0, 20)
-        Icon.Position = UDim2.new(0, 12, 0, 12)
-        Icon.BackgroundTransparency = 1
-        Icon.Image = Image
-        Icon.Parent = Frame
+        local f = Instance.new("Frame", m)
+        f.Size = UDim2.new(0, 400, 0, 90)
+        f.Position = UDim2.new(.5, -200, .1, -100)
+        f.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+        f.BorderSizePixel = 0
+        Instance.new("UICorner", f).CornerRadius = UDim.new(0, 8)
 
-        local Title = Instance.new("TextLabel")
-        Title.Size = UDim2.new(1, -45, 0, 20)
-        Title.Position = UDim2.new(0, 40, 0, 10)
-        Title.BackgroundTransparency = 1
-        Title.Text = Name
-        Title.TextColor3 = Color3.new(1, 1, 1)
-        Title.TextSize = 15
-        Title.Font = Enum.Font.GothamBold
-        Title.TextXAlignment = Enum.TextXAlignment.Left
-        Title.Parent = Frame
+        local function a(o, c)
+            local s = Instance.new("UIStroke", o)
+            s.Thickness = 3
+            s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            local g = Instance.new("UIGradient", s)
+            g.Color = ColorSequence.new(ColorSequenceKeypoint.new(0, c), ColorSequenceKeypoint.new(.5, Color3.fromRGB(18, 8, 38)), ColorSequenceKeypoint.new(1, c))
+            task.spawn(function()
+                while g.Parent do
+                    local w = T:Create(g, TweenInfo.new(3.7), {Rotation = 360})
+                    g.Rotation = 0
+                    w:Play()
+                    w.Completed:Wait()
+                end
+            end)
+        end
 
-        local Text = Instance.new("TextLabel")
-        Text.Size = UDim2.new(1, -24, 0, 35)
-        Text.Position = UDim2.new(0, 12, 0, 38)
-        Text.BackgroundTransparency = 1
-        Text.Text = Content
-        Text.TextColor3 = Color3.fromRGB(200, 200, 200)
-        Text.TextSize = 14
-        Text.Font = Enum.Font.Gotham
-        Text.TextWrapped = true
-        Text.TextXAlignment = Enum.TextXAlignment.Left
-        Text.Parent = Frame
+        a(f, Color3.fromRGB(140, 80, 255))
 
-        TweenService:Create(Frame, TweenInfo.new(0.5), {
-            Position = UDim2.new(1, -310, 0, 0)
-        }):Play()
+        local l = Instance.new("TextLabel", f)
+        l.Size = UDim2.new(0, 350, 0, 50)
+        l.Position = UDim2.new(0, 25, 0, 20)
+        l.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        l.BorderSizePixel = 0
+        l.Text = Name .. " | " .. Content
+        l.TextColor3 = Color3.new(1, 1, 1)
+        l.TextSize = 16
+        l.Font = Enum.Font.Gotham
+        Instance.new("UICorner", l).CornerRadius = UDim.new(0, 6)
+        a(l, Color3.fromRGB(255, 80, 200))
+
+        T:Create(f, TweenInfo.new(.8, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(.5, -200, .1, 30)}):Play()
 
         task.wait(Time)
 
-        TweenService:Create(Frame, TweenInfo.new(0.5), {
-            Position = UDim2.new(1, 20, 0, 0),
-            BackgroundTransparency = 1
-        }):Play()
-
-        task.wait(0.5)
-        Frame:Destroy()
+        local w = T:Create(f, TweenInfo.new(.8, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {Position = UDim2.new(.5, -200, .1, -100), BackgroundTransparency = 1})
+        w:Play()
+        w.Completed:Connect(function() m:Destroy() end)
     end)
 end
 
