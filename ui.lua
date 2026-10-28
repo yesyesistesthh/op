@@ -8,7 +8,6 @@ function rno(classname,pArent,prot)
   return intak 
 end
     
-
 local cofingui = {
   Size = UDim2.fromOffset(441,268),
   colortextred= Color3.fromRGB(255, 0, 0)
@@ -77,11 +76,15 @@ gradient.Color = ColorSequence.new{
     ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,0,0)),
     ColorSequenceKeypoint.new(1, Color3.fromRGB(255,0,0))
 }
-gradient.Rotation = 0
 
-local tweenInfo = TweenInfo.new(3.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1)
-local tween = TweenService:Create(gradient, tweenInfo, {Rotation = 360})
-tween:Play()
+task.spawn(function()
+    while gradient.Parent do
+        gradient.Rotation = 0
+        local tween = TweenService:Create(gradient, TweenInfo.new(3.5, Enum.EasingStyle.Linear), {Rotation = 360})
+        tween:Play()
+        tween.Completed:Wait()
+    end
+end)
 end
 
 
