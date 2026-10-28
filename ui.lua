@@ -16,7 +16,7 @@ local cofingui = {
 local devs = {
   dev_1_nick = "Alexander",rank_2 ="المصمم/سـكربتر",img_dev1 = "https://ik.imagekit.io/17xocy4pg/Rakan.jpg?updatedAt=1788993377160",
   dev_2_nick = "Ronaldo",rank_3 = "سكـربتر",img_dev2 = "https://www.roblox.com/headshot-thumbnail/image?userId=6233008733&width=420&height=420&format=png",
-  owner_nick = "Omar",rank_owner = "الاونر",img_owner = "rbxassetid://86388577296664",
+  owner_nick = "Omar",rank_owner = "سكـربتر",img_owner = "rbxassetid://86388577296664",
 }
 task.spawn(function()
 function add_dev(nameimg,urlimg)
@@ -575,57 +575,12 @@ Frame_Dev.BackgroundTransparency = 0
 Frame_Dev.Name = "Frame_Dev"
 local UICorner_Frame_Dev = Instance.new("UICorner", Frame_Dev)
 
-local Mecry_Owner_Frame = Instance.new("Frame")
-Mecry_Owner_Frame.Parent = Frame_Dev
-Mecry_Owner_Frame.BorderSizePixel = 0
-Mecry_Owner_Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-Mecry_Owner_Frame.Size = UDim2.new(0, 130, 0, 95)
-Mecry_Owner_Frame.Position = UDim2.new(0, -9, 0, 6)
-Mecry_Owner_Frame.BackgroundTransparency = 1
-Mecry_Owner_Frame.Name = "Mecry_Owner_Frame"
-
-local Mecry_Owner_TextLabel1 = Instance.new("TextLabel")
-Mecry_Owner_TextLabel1.Parent = Mecry_Owner_Frame
-Mecry_Owner_TextLabel1.BorderSizePixel = 0
-Mecry_Owner_TextLabel1.TextSize = 18
-Mecry_Owner_TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Mecry_Owner_TextLabel1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Mecry_Owner_TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
-Mecry_Owner_TextLabel1.BackgroundTransparency = 1
-Mecry_Owner_TextLabel1.Size = UDim2.new(0, 120, 0, 22)
-Mecry_Owner_TextLabel1.Text = devs.rank_owner
-Mecry_Owner_TextLabel1.Position = UDim2.new(0, -9, 0, 50)
-
-local Mecry_Owner_TextLabel2 = Instance.new("TextLabel")
-Mecry_Owner_TextLabel2.Parent = Mecry_Owner_Frame
-Mecry_Owner_TextLabel2.BorderSizePixel = 0
-Mecry_Owner_TextLabel2.TextSize = 17
-Mecry_Owner_TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Mecry_Owner_TextLabel2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Mecry_Owner_TextLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
-Mecry_Owner_TextLabel2.BackgroundTransparency = 1
-Mecry_Owner_TextLabel2.Size = UDim2.new(0, 120, 0, 22)
-Mecry_Owner_TextLabel2.Text = devs.owner_nick
-Mecry_Owner_TextLabel2.Position = UDim2.new(0, -9, 0, 65)
-
-local Mecry_Owner_ImageLabel1 = Instance.new("ImageLabel")
-Mecry_Owner_ImageLabel1.Parent = Mecry_Owner_Frame
-Mecry_Owner_ImageLabel1.BorderSizePixel = 0
-Mecry_Owner_ImageLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Mecry_Owner_ImageLabel1.Image = devs.img_owner
-Mecry_Owner_ImageLabel1.Size = UDim2.new(0, 50, 0, 50)
-Mecry_Owner_ImageLabel1.Position = UDim2.new(0, 26, 0, 2)
-local Mecry_Owner_ImageCorner1 = Instance.new("UICorner")
-Mecry_Owner_ImageCorner1.Parent = Mecry_Owner_ImageLabel1
-Mecry_Owner_ImageCorner1.CornerRadius = UDim.new(0, 444)
-sot(Mecry_Owner_ImageLabel1)
-
 local Aelxander_Frame = Instance.new("Frame")
 Aelxander_Frame.Parent = Frame_Dev
 Aelxander_Frame.BorderSizePixel = 0
 Aelxander_Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 Aelxander_Frame.Size = UDim2.new(0, 130, 0, 95)
-Aelxander_Frame.Position = UDim2.new(0, 57, 0, 6)
+Aelxander_Frame.Position = UDim2.new(0, -9, 0, 6)
 Aelxander_Frame.BackgroundTransparency = 1
 Aelxander_Frame.Name = "Aelxander_Frame"
 
@@ -670,7 +625,7 @@ Ronaldo_Frame.Parent = Frame_Dev
 Ronaldo_Frame.BorderSizePixel = 0
 Ronaldo_Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
 Ronaldo_Frame.Size = UDim2.new(0, 130, 0, 95)
-Ronaldo_Frame.Position = UDim2.new(0, 125, 0, 6)
+Ronaldo_Frame.Position = UDim2.new(0, 57, 0, 6)
 Ronaldo_Frame.BackgroundTransparency = 1
 Ronaldo_Frame.Name = "Ronaldo_Frame"
 
@@ -709,6 +664,52 @@ local ImageCorner2 = Instance.new("UICorner")
 ImageCorner2.Parent = ImageLabel2
 ImageCorner2.CornerRadius = UDim.new(0, 444)
 sot(ImageLabel2)
+
+local Mecry_Owner_Frame = Instance.new("Frame")
+Mecry_Owner_Frame.Parent = Frame_Dev
+Mecry_Owner_Frame.BorderSizePixel = 0
+Mecry_Owner_Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+Mecry_Owner_Frame.Size = UDim2.new(0, 130, 0, 95)
+Mecry_Owner_Frame.Position = UDim2.new(0, 125, 0, 6)
+Mecry_Owner_Frame.BackgroundTransparency = 1
+Mecry_Owner_Frame.Name = "Mecry_Owner_Frame"
+
+local Mecry_Owner_TextLabel1 = Instance.new("TextLabel")
+Mecry_Owner_TextLabel1.Parent = Mecry_Owner_Frame
+Mecry_Owner_TextLabel1.BorderSizePixel = 0
+Mecry_Owner_TextLabel1.TextSize = 18
+Mecry_Owner_TextLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Mecry_Owner_TextLabel1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+Mecry_Owner_TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mecry_Owner_TextLabel1.BackgroundTransparency = 1
+Mecry_Owner_TextLabel1.Size = UDim2.new(0, 120, 0, 22)
+Mecry_Owner_TextLabel1.Text = devs.rank_owner
+Mecry_Owner_TextLabel1.Position = UDim2.new(0, -9, 0, 50)
+
+local Mecry_Owner_TextLabel2 = Instance.new("TextLabel")
+Mecry_Owner_TextLabel2.Parent = Mecry_Owner_Frame
+Mecry_Owner_TextLabel2.BorderSizePixel = 0
+Mecry_Owner_TextLabel2.TextSize = 17
+Mecry_Owner_TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Mecry_Owner_TextLabel2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+Mecry_Owner_TextLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Mecry_Owner_TextLabel2.BackgroundTransparency = 1
+Mecry_Owner_TextLabel2.Size = UDim2.new(0, 120, 0, 22)
+Mecry_Owner_TextLabel2.Text = devs.owner_nick
+Mecry_Owner_TextLabel2.Position = UDim2.new(0, -9, 0, 65)
+
+local Mecry_Owner_ImageLabel1 = Instance.new("ImageLabel")
+Mecry_Owner_ImageLabel1.Parent = Mecry_Owner_Frame
+Mecry_Owner_ImageLabel1.BorderSizePixel = 0
+Mecry_Owner_ImageLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Mecry_Owner_ImageLabel1.Image = devs.img_owner
+Mecry_Owner_ImageLabel1.Size = UDim2.new(0, 50, 0, 50)
+Mecry_Owner_ImageLabel1.Position = UDim2.new(0, 26, 0, 2)
+local Mecry_Owner_ImageCorner1 = Instance.new("UICorner")
+Mecry_Owner_ImageCorner1.Parent = Mecry_Owner_ImageLabel1
+Mecry_Owner_ImageCorner1.CornerRadius = UDim.new(0, 444)
+sot(Mecry_Owner_ImageLabel1)
+
 cot(Frame_Dev)
 sot(Frame_Dev)
 end
