@@ -1219,8 +1219,8 @@ function uiRbs:MakeNotification(Name, Content, Image, Time)
         m.Parent=p
 
         local f=Instance.new("Frame")
-        f.Size=UDim2.new(0,550,0,90) -- كبرنا العرض
-        f.Position=UDim2.new(.5,-275,.1,-100) -- عدلنا الموقع عشان يتوسط
+        f.Size=UDim2.new(0,550,0,90)
+        f.Position=UDim2.new(.5,-275,.1,-100) -- عيري بحجم المربع
         f.BackgroundColor3=Color3.fromRGB(30,30,50)
         f.BorderSizePixel=0
         f.Parent=m
