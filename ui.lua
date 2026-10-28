@@ -1209,58 +1209,65 @@ NotificationHolder.Parent = ScreenGui
 
 function uiRbs:MakeNotification(Name, Content, Image, Time)
     task.spawn(function()
-        local T = game:GetService("TweenService")
-        local p = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+        local T=game:GetService("TweenService")
+        local p=game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-        local m = Instance.new("ScreenGui", p)
-        m.ResetOnSpawn = false
-        m.DisplayOrder = 999
-        m.IgnoreGuiInset = true
+        local m=Instance.new("ScreenGui")
+        m.ResetOnSpawn=false
+        m.DisplayOrder=999
+        m.IgnoreGuiInset=true
+        m.Parent=p
 
-        local f = Instance.new("Frame", m)
-        f.Size = UDim2.new(0, 400, 0, 90)
-        f.Position = UDim2.new(.5, -200, .1, -100)
-        f.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
-        f.BorderSizePixel = 0
-        Instance.new("UICorner", f).CornerRadius = UDim.new(0, 8)
+        local f=Instance.new("Frame")
+        f.Size=UDim2.new(0,400,0,90)
+        f.Position=UDim2.new(.5,-200,.1,-100)
+        f.BackgroundColor3=Color3.fromRGB(30,30,50)
+        f.BorderSizePixel=0
+        f.Parent=m
+        Instance.new("UICorner",f).CornerRadius=UDim.new(0,8)
 
-        local function a(o, c)
-            local s = Instance.new("UIStroke", o)
-            s.Thickness = 3
-            s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-            local g = Instance.new("UIGradient", s)
-            g.Color = ColorSequence.new(ColorSequenceKeypoint.new(0, c), ColorSequenceKeypoint.new(.5, Color3.fromRGB(18, 8, 38)), ColorSequenceKeypoint.new(1, c))
+        local function a(o,c)
+            local s=Instance.new("UIStroke",o)
+            s.Color=Color3.fromRGB(255,255,255)
+            s.Thickness=3
+            s.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+            local g=Instance.new("UIGradient",s)
+            g.Color=ColorSequence.new{
+                ColorSequenceKeypoint.new(0,c),
+                ColorSequenceKeypoint.new(.5,Color3.fromRGB(18,8,38)),
+                ColorSequenceKeypoint.new(1,c)}
             task.spawn(function()
                 while g.Parent do
-                    local w = T:Create(g, TweenInfo.new(3.7), {Rotation = 360})
-                    g.Rotation = 0
+                    g.Rotation=0
+                    local w=T:Create(g,TweenInfo.new(3.7,Enum.EasingStyle.Linear),{Rotation=360})
                     w:Play()
                     w.Completed:Wait()
-                end
+                end 
             end)
         end
 
-        a(f, Color3.fromRGB(140, 80, 255))
+        a(f,Color3.fromRGB(140,80,255))
 
-        local l = Instance.new("TextLabel", f)
-        l.Size = UDim2.new(0, 350, 0, 50)
-        l.Position = UDim2.new(0, 25, 0, 20)
-        l.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-        l.BorderSizePixel = 0
-        l.Text = Name .. " | " .. Content
-        l.TextColor3 = Color3.new(1, 1, 1)
-        l.TextSize = 16
-        l.Font = Enum.Font.Gotham
-        Instance.new("UICorner", l).CornerRadius = UDim.new(0, 6)
-        a(l, Color3.fromRGB(255, 80, 200))
+        local l=Instance.new("TextLabel")
+        l.Size=UDim2.new(0,150,0,40)
+        l.Position=UDim2.new(0,133,0,21)
+        l.BackgroundColor3=Color3.fromRGB(80,80,80)
+        l.BorderSizePixel=0
+        l.Text=Name.." | "..Content
+        l.TextColor3=Color3.fromRGB(255,255,255)
+        l.TextSize=16
+        l.Font=Enum.Font.Gotham
+        l.Parent=f
+        Instance.new("UICorner",l).CornerRadius=UDim.new(0,6)
+        a(l,Color3.fromRGB(255,80,200))
 
-        T:Create(f, TweenInfo.new(.8, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(.5, -200, .1, 30)}):Play()
+        T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(.5,-200,.1,30)}):Play()
 
-        task.wait(Time)
-
-        local w = T:Create(f, TweenInfo.new(.8, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {Position = UDim2.new(.5, -200, .1, -100), BackgroundTransparency = 1})
-        w:Play()
-        w.Completed:Connect(function() m:Destroy() end)
+        task.delay(Time,function()
+            local w=T:Create(f,TweenInfo.new(.8,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(.5,-200,.1,-100),BackgroundTransparency=1})
+            w:Play()
+            w.Completed:Connect(function()m:Destroy()end)
+        end)
     end)
 end
 
